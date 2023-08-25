@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Animated, StyleSheet, Text, View } from 'react-native';
-import { Svg } from 'react-native-svg';
+import {Animated, StyleSheet, Text, View} from 'react-native';
+import {Svg} from 'react-native-svg';
 
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
@@ -135,11 +135,10 @@ export class ProgressCircle extends Component {
                   ],
                 }
               : undefined
-          }
-        >
+          }>
           {unfilledColor && progressValue !== 1 ? (
             <Shape
-              fill={fill}
+              fill={fill ?? 'none'}
               radius={radius}
               offset={offset}
               startAngle={angle}
@@ -153,7 +152,7 @@ export class ProgressCircle extends Component {
           )}
           {!indeterminate ? (
             <Shape
-              fill={fill}
+              fill={fill ?? 'none'}
               radius={radius}
               offset={offset}
               startAngle={0}
@@ -168,6 +167,7 @@ export class ProgressCircle extends Component {
           )}
           {border ? (
             <Arc
+              fill={fill ?? 'none'}
               radius={size / 2}
               startAngle={0}
               endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
@@ -190,8 +190,7 @@ export class ProgressCircle extends Component {
               borderRadius: textSize / 2,
               alignItems: 'center',
               justifyContent: 'center',
-            }}
-          >
+            }}>
             <Text
               style={[
                 {
@@ -201,8 +200,7 @@ export class ProgressCircle extends Component {
                 },
                 textStyle,
               ]}
-              allowFontScaling={allowFontScaling}
-            >
+              allowFontScaling={allowFontScaling}>
               {formatText(progressValue)}
             </Text>
           </View>
